@@ -16,11 +16,12 @@
 <body>
 
 
-    <form action="index.html" method="post">
+    <form action="php/login.php" method="post">
 
         <h1>LOG IN</h1>
 
         <h1 style="font-size: 15px; display: none;" id="reg-success">Registration is successful! Kindly login now!</h1>
+        <h1 style="font-size: 15px; display: none;" id="log-password">Incorrect Password or Email!</h1>
 
 
         <div class="container">
@@ -63,6 +64,9 @@
             const getFlag = urlParams.get('reg');
             if (getFlag === 'success') {
                 $("#reg-success").css("display","block");
+            }
+            if (getFlag === 'failed') {
+                $("#log-password").css("display","block");
             }
         });
     </script>
