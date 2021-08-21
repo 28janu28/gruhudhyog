@@ -1,11 +1,11 @@
 <?php
 require_once('config.php');
 
-$qery_for_fetching_category_dataset = "SELECT id, name, created_at, created_by, updated_at, updated_by FROM category";
-$result = $conn->query($qery_for_fetching_category_dataset);
-$category_dataset = [];
+$qery_for_fetching_product_dataset = "SELECT id, name, category_id, price, qty, seller_id, image_name, image_path FROM product";
+$result = $conn->query($qery_for_fetching_product_dataset);
+$product_dataset = [];
 if ($result->num_rows > 0) {
-    $category_dataset = $result->fetch_all(MYSQLI_ASSOC);
+    $product_dataset = $result->fetch_all(MYSQLI_ASSOC);
 }
 ?>
 <!DOCTYPE html>
@@ -86,23 +86,25 @@ if ($result->num_rows > 0) {
                                 <table id="categoryTable">
                                     <thead>
                                         <tr>
+                                            <th>Image</th>
                                             <th>ID</th>
                                             <th>Name</th>
-                                            <th>Created Date</th>
-                                            <th>Created By</th>
-                                            <th>Updated Date</th>
-                                            <th>Updated By</th>
+                                            <th>Category</th>
+                                            <th>Price (₹)</th>
+                                            <th>Qty</th>
+                                            <th>Seller</th>
                                         </tr>
                                     </thead>
-                                    <?php if(!empty($category_dataset)) { ?>
-                                        <?php foreach($category_dataset as $category) { ?>
+                                    <?php if(!empty($product_dataset)) { ?>
+                                        <?php foreach($product_dataset as $product) { ?>
                                             <tr>
-                                                <td><?php echo $category['id']; ?></td>
-                                                <td><?php echo $category['name']; ?></td>
-                                                <td><?php echo $category['created_at']; ?></td>
-                                                <td><?php echo $category['created_by']; ?></td>
-                                                <td><?php echo $category['updated_at']; ?></td>
-                                                <td><?php echo $category['updated_by']; ?></td>
+                                                <td><?php echo 'Coming Soon...'; ?></td>
+                                                <td><?php echo $product['id']; ?></td>
+                                                <td><?php echo $product['name']; ?></td>
+                                                <td><?php echo $product['category_id']; ?></td>
+                                                <td><?php echo $product['price']; ?></td>
+                                                <td><?php echo $product['qty']; ?></td>
+                                                <td><?php echo $product['seller_id']; ?></td>
                                             </tr>
                                         <?php } ?>
                                     <?php } ?>
