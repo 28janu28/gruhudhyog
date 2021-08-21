@@ -34,7 +34,7 @@ if ($result->num_rows > 0) {
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="../index.html">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -83,7 +83,7 @@ if ($result->num_rows > 0) {
                                 <a class="btn btn-primary editor-create">Add Category</a>
                             </div>
                             <div class="card-body">
-                                <table id="categoryTable">
+                                <table id="categoryTable" class="display">
                                     <thead>
                                         <tr>
                                             <th>Image</th>
