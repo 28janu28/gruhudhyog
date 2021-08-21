@@ -1,7 +1,7 @@
 <?php
 require_once('config.php');
 
-$qery_for_fetching_product_dataset = "SELECT id, name, category_id, price, qty, seller_id, image_name, image_path FROM product";
+$qery_for_fetching_product_dataset = "SELECT id, name, category_id, price, qty, seller_id, image_name, image_path, category_name, seller_name FROM product";
 $result = $conn->query($qery_for_fetching_product_dataset);
 $product_dataset = [];
 if ($result->num_rows > 0) {
@@ -71,40 +71,43 @@ if ($result->num_rows > 0) {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Category</h1>
+                        <h1 class="mt-4">Product</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="">Category</a></li>
+                            <li class="breadcrumb-item"><a href="">Product</a></li>
                             <li class="breadcrumb-item active">Tables</li>
                         </ol>
 						
                         <div class="card mb-4">
                             <div class="card-header">
                                 <!-- <i class="fas fa-table me-1"></i> -->
-                                <a class="btn btn-primary" hrer="">Add Category</a>
+                                <a class="btn btn-primary editor-create">Add Category</a>
                             </div>
                             <div class="card-body">
                                 <table id="categoryTable">
                                     <thead>
                                         <tr>
                                             <th>Image</th>
-                                            <th>ID</th>
                                             <th>Name</th>
                                             <th>Category</th>
                                             <th>Price (₹)</th>
                                             <th>Qty</th>
                                             <th>Seller</th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <?php if(!empty($product_dataset)) { ?>
                                         <?php foreach($product_dataset as $product) { ?>
                                             <tr>
-                                                <td><?php echo 'Coming Soon...'; ?></td>
-                                                <td><?php echo $product['id']; ?></td>
+                                                <!-- <td><img src="..\img\Papad\jeera_papad.jpg"></td> -->
+                                                <td><img src="<?php echo '..'.$product['image_path']; ?><?php echo $product['image_name'].'.jpg'; ?>" width="120" height="120"></td>
                                                 <td><?php echo $product['name']; ?></td>
-                                                <td><?php echo $product['category_id']; ?></td>
+                                                <td><?php echo $product['category_name']; ?></td>
                                                 <td><?php echo $product['price']; ?></td>
                                                 <td><?php echo $product['qty']; ?></td>
-                                                <td><?php echo $product['seller_id']; ?></td>
+                                                <td><?php echo $product['seller_name']; ?></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                         <?php } ?>
                                     <?php } ?>
