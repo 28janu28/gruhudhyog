@@ -1,13 +1,3 @@
-<?php
-require_once('config.php');
-
-$qery_for_fetching_product_dataset = "SELECT id, name, category_id, price, qty, seller_id, image_name, image_path, category_name, seller_name FROM product";
-$result = $conn->query($qery_for_fetching_product_dataset);
-$product_dataset = [];
-if ($result->num_rows > 0) {
-    $product_dataset = $result->fetch_all(MYSQLI_ASSOC);
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,8 +5,7 @@ if ($result->num_rows > 0) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>Admin Panel</title>
-        <!-- <link href="css/datatable.css" rel="stylesheet" /> -->
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
+        <link href="css/datatable.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -34,7 +23,7 @@ if ($result->num_rows > 0) {
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="../index.html">Logout</a></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -44,15 +33,11 @@ if ($result->num_rows > 0) {
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="index.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Category
+                                Dashboard
                             </a>
-                            <a class="nav-link" href="product.php">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Product
-                            </a>
-                            <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Layouts
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -62,7 +47,7 @@ if ($result->num_rows > 0) {
                                     <a class="nav-link" href="layout-static.html">Static Navigation</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
                                 </nav>
-                            </div> -->
+                            </div>
                             
                         </div>
                     </div>
@@ -71,46 +56,48 @@ if ($result->num_rows > 0) {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Product</h1>
+                        <h1 class="mt-4">Tables</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="">Product</a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li class="breadcrumb-item active">Tables</li>
                         </ol>
 						
                         <div class="card mb-4">
                             <div class="card-header">
-                                <!-- <i class="fas fa-table me-1"></i> -->
-                                <a class="btn btn-primary editor-create">Add Category</a>
+                                <i class="fas fa-table me-1"></i>
+                                DataTable Example
                             </div>
                             <div class="card-body">
-                                <table id="categoryTable" class="display">
+                                <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Image</th>
                                             <th>Name</th>
-                                            <th>Category</th>
-                                            <th>Price (₹)</th>
-                                            <th>Qty</th>
-                                            <th>Seller</th>
-                                            <th></th>
-                                            <th></th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
                                         </tr>
                                     </thead>
-                                    <?php if(!empty($product_dataset)) { ?>
-                                        <?php foreach($product_dataset as $product) { ?>
-                                            <tr>
-                                                <!-- <td><img src="..\img\Papad\jeera_papad.jpg"></td> -->
-                                                <td><img src="<?php echo '\\'.$product['image_path']; ?><?php echo $product['image_name'].'.jpg'; ?>" width="120" height="120"></td>
-                                                <td><?php echo $product['name']; ?></td>
-                                                <td><?php echo $product['category_name']; ?></td>
-                                                <td><?php echo $product['price']; ?></td>
-                                                <td><?php echo $product['qty']; ?></td>
-                                                <td><?php echo $product['seller_name']; ?></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        <?php } ?>
-                                    <?php } ?>
+									
+                                    <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>2011/04/25</td>
+                                            <td>$320,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Garrett Winters</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>63</td>
+                                            <td>2011/07/25</td>
+                                            <td>$170,750</td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -120,7 +107,7 @@ if ($result->num_rows > 0) {
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; 2021 Developed by : Janvi Ranpara</div>
+                            <div class="text-muted">Copyright &copy; 2021 Developed by : Harshad Fefar</div>
                         </div>
                     </div>
                 </footer>
@@ -128,15 +115,7 @@ if ($result->num_rows > 0) {
         </div>
         <script src="js/bootstrap.js"></script>
         <script src="js/scripts.js"></script>
-        <!-- <script src="js/datatable.js"></script>
-        <script src="js/datatables-simple-demo.js"></script> -->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('#categoryTable').DataTable();
-            });
-        </script>
-        
+        <script src="js/datatable.js"></script>
+        <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>
