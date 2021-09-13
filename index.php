@@ -69,6 +69,9 @@ if ($result->num_rows > 0) {
                     <a href="login.html" class="nav-item nav-link loginBtn">Login</a>
                     <a href="Register.html" class="nav-item nav-link regBtn">Register</a>
                     <a href="login.html" class="nav-item nav-link" style="display: none;" id="loggedInUser">Hi, Vivek</a>
+                    <i class="fas fa-cart-arrow-down" style="font-size: x-large; margin-top: 8px; cursor: pointer;">
+                    <span>0</span>
+                    </i>
 
                     <div class="nav-item dropdown">
 
@@ -91,7 +94,7 @@ if ($result->num_rows > 0) {
             <div class="owl-carousel">
                 <div class="carousel-item">
                     <div class="carousel-img">
-                        <img src="img/papd.jpg" alt="Image">
+                        <img src="img/papad.jpg" alt="Image">
                     </div>
                     <div class="carousel-text">
                         <h1> <span>Papad</span></h1>
@@ -165,21 +168,21 @@ if ($result->num_rows > 0) {
                 <!-- food catalogue -->
                 <div class="col-md-4">
                     <div class="food-item">
-                        <i class="flaticon-burger"></i>
+                        <!-- <i class="flaticon-burger"></i> -->
+                        <i class="fas fa-cookie"></i>
                         <h2>Papad</h2>
                         <p>
-                            Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor auctor quis sem.
+                        "So long as you have food in your mouth you should all question for the time being."
                         </p>
                         <a onclick="showPapads()" class="btn btn-primary" style="color: white; background-color: green;">View Papads</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="food-item">
-                        <i class="flaticon-burger"></i>
+                        <i class="fas fa-cookie"></i>
                         <h2>Khakhra</h2>
                         <p>
-                            Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor auctor quis sem.
-                        </p>
+                        "Breakfast in 12 Words And aromatic Tea with 1 wheat Khakhara to go with is perfect"                        </p>
                         <a onclick="showKhakhras()" class="btn btn-primary" style="color: white; background-color: green;">View Khakhras</a>
                     </div>
                 </div>
@@ -188,7 +191,8 @@ if ($result->num_rows > 0) {
                         <i class="flaticon-burger"></i>
                         <h2>Pickle</h2>
                         <p>
-                            Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor auctor quis sem.
+                            A different situation<br><br>
+                            "I am in a Pickles."
                         </p>
                         <a onclick="showPickles()" class="btn btn-primary" style="color: white; background-color: green;">View Pickles</a>
                     </div>
@@ -211,7 +215,7 @@ if ($result->num_rows > 0) {
                                 <h2><?php echo $product['name']; ?></h2>
                                 <h5>Net Qty : <?php echo $product['qty'].' gm'; ?></h5>
                                 <h5>Price : <?php echo $product['price'].' ₹'; ?></h5>
-                                <a href="#">Add to Cart</a>
+                                <a href="php/addToCart.php?productId=<?php echo $product['id']; ?>&productName=<?php echo $product['name']; ?>">Add to Cart</a>
                             </div>
                         </div>
                     <?php } ?>
